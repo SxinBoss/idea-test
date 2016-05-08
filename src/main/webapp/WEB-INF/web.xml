@@ -17,7 +17,7 @@
 
     <servlet-mapping>
         <servlet-name>sxin-servlet</servlet-name>
-        <url-pattern>/sxin</url-pattern>
+        <url-pattern>/sxin/*</url-pattern>
     </servlet-mapping>
 
     <servlet>
