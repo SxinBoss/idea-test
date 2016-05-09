@@ -41,6 +41,7 @@ public class TestServlet extends HttpServlet {
             Object obj = c.newInstance();
             Method[] mList = c.getMethods();
             for (Method m:mList) {
+                m.invoke(obj,req,resp);
                 Annotation[] annotations=m.getAnnotations();
                 for(Annotation annotation : annotations){
                     TestAnnotation testAnnotation = (TestAnnotation) annotation;
