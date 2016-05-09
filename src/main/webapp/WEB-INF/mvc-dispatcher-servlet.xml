@@ -14,4 +14,9 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <bean id="tb" class="me.test.TestBean">
+        <property name="name" value="songxin"/>
+        <property name="age" value="19"/>
+    </bean>
 </beans>
