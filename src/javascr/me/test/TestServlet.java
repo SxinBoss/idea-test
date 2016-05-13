@@ -1,5 +1,9 @@
 package me.test;
 
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.XMLConfiguration;
+import org.apache.commons.configuration.tree.ConfigurationNode;
+
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +14,7 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * Created by mereyu on 2016-05-07.
@@ -33,6 +38,7 @@ public class TestServlet extends HttpServlet {
             for(Annotation a :classList){
                 resp.getWriter().write(a.toString()+"<hr />");
             }*/
+        /*
         resp.setHeader("content-type","text/html");
         String getURI=req.getRequestURI();
         getURI=getURI.replace("/sxin/","");
@@ -54,6 +60,27 @@ public class TestServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+*/
+        resp.setHeader("Content-type","text/html");
+        XMLConfiguration xml = new XMLConfiguration();
+        try {
+            String filePath =this.getClass().getClassLoader().getResource("sxin.xml").toString();
+            xml.load(filePath);
 
+            write(resp,filePath);
+            write(resp,"<hr />");
+            List<ConfigurationNode> rcList=xml.getRoot().getChildren("test");
+
+            for (ConfigurationNode c:rcList) {
+                write(resp,c.getAttribute(0).getName().toString());
+                write(resp,"<hr />");
+            }
+        } catch (Exception e) {
+            write(resp,e.toString());
+            e.printStackTrace();
+        }
+    }
+    private void write(HttpServletResponse resp,String string) throws IOException {
+        resp.getWriter().write(string);
     }
 }
