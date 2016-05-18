@@ -23,22 +23,22 @@ public class TestServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-/*        req.setAttribute("name","sxin");
-        req.setAttribute("age",18);
-        req.setAttribute("title","info");
+     /*   req.setAttribute("name", "sxin");
+        req.setAttribute("age", 18);
+        req.setAttribute("title", "info");
 
-        req.getRequestDispatcher("/WEB-INF/sxin.jsp").forward(req,resp);*/
-               /*     resp.getWriter().write("getAge->Ann <hr />");
-            Annotation[] maList= c.getMethod("getAge").getAnnotations();
-            for(Annotation a :maList){
-                resp.getWriter().write(a.toString()+"<hr />");
-            }
-            resp.getWriter().write("Class->Ann <hr />");
-            Annotation[] classList= c.getAnnotations();
-            for(Annotation a :classList){
-                resp.getWriter().write(a.toString()+"<hr />");
-            }*/
-        /*
+        req.getRequestDispatcher("/WEB-INF/sxin.jsp").forward(req, resp);
+        resp.getWriter().write("getAge->Ann <hr />");
+        Annotation[] maList = c.getMethod("getAge").getAnnotations();
+        for (Annotation a : maList) {
+            resp.getWriter().write(a.toString() + "<hr />");
+        }
+        resp.getWriter().write("Class->Ann <hr />");
+        Annotation[] classList = c.getAnnotations();
+        for (Annotation a : classList) {
+            resp.getWriter().write(a.toString() + "<hr />");
+        }
+
         resp.setHeader("content-type","text/html");
         String getURI=req.getRequestURI();
         getURI=getURI.replace("/sxin/","");
@@ -61,6 +61,10 @@ public class TestServlet extends HttpServlet {
             e.printStackTrace();
         }
 */
+
+
+
+        resp.getWriter().close();
         resp.setHeader("Content-type","text/html");
         XMLConfiguration xml = new XMLConfiguration();
         try {
