@@ -1,14 +1,10 @@
 package db;
 
-import com.microsoft.sqlserver.jdbc.SQLServerDriver;
-import org.apache.commons.configuration.tree.ConfigurationNode;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * Created by merey on 2016-05-15.
@@ -18,26 +14,22 @@ public class SxinPool {
     static {
 
         System.out.println("SxinPool static");
-     //   String url = "jdbc:mysql://localhost:3306/myweb?"
-       //         + "user=root&password=qwert&useUnicode=true&characterEncoding=UTF8";
-        String url="jdbc:sqlserver://121.40.209.140,2833; DatabaseName=ESCN";
-        /*
-        try {
-            //Class.forName("com.mysql.jdbc.Driver");
-            SQLServerDriver sqlDriver = new SQLServerDriver();
-            Properties infoPro = new Properties();
-            infoPro.setProperty("userName","ECM");
-            infoPro.setProperty("userPwd","ECM");
+        String url = "jdbc:mysql://localhost:3306/myweb?"
+                + "user=root&password=qwert&useUnicode=true&characterEncoding=UTF8";
 
-            //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+
             poolMap = new HashMap<Connection, Integer>();
             for(int i=0;i<2;i++){
-                poolMap.put(sqlDriver.connect(url,infoPro),0);
+                poolMap.put(DriverManager.getConnection(url),0);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Connection getConnection(){
